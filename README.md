@@ -15,7 +15,7 @@ The application is split into two parts:
 
 ### Task 1: Dockerizing the Applications
 
-1. Create a Dockerfile for the server-side application. This application runs on Node.js.
+1. Create a Dockerfile for the server-side application. This aapplication runs on Node.js.
 2. Create a Dockerfile for the client-side application. This application is a simple static website.
 3. Write a docker-compose.yml file that is capable of spinning up both applications together, allowing the client-side application to communicate with the server-side application.
 
@@ -48,4 +48,3 @@ Please organize, design, test, and document your code as if it were going into p
 Have fun coding! 🚀
 
 The LINAGORA Team
-

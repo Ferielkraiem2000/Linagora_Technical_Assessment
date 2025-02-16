@@ -1,0 +1,29 @@
+# Ignore Vagrant-related files
+Vagrantfile
+.vagrant/
+
+# Ignore dependencies
+backend/node_modules/
+
+# Ignore Docker-related script
+get-docker.sh
+
+# Ignore Minikube binary for Linux
+minikube-linux-amd64
+
+# Ignore IDE files
+.vscode/
+
+.bash_logout
+.bashrc
+.cache/
+.config/
+.docker/
+.kube/
+.lesshst
+.minikube/
+.profile
+.ssh/
+.sudo_as_admin_successful
+.vbox_version
+.wget-hsts

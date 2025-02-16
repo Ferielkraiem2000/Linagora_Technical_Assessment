@@ -1,0 +1,33 @@
+apiVersion: apps/v1  # Specifies the version of the Kubernetes API for the Deployment resource.
+kind: Deployment  # The type of Kubernetes resource we are creating
+metadata:
+  name: client-deployment  # The name given to the Deployment resource
+spec:
+  replicas: 2  # Number of identical pods you want running
+  selector:
+    matchLabels:
+      app: client  # The Deployment will manage pods that have the label 'app: client'.
+  template:
+    metadata:
+      labels:
+        app: client  # The pods created by the Deployment will have the label 'app: client'.
+    spec:
+      containers:
+      - name: client  # The name of the container inside the pod.
+        image: ferielkraiem/client-side:latest # The image used for the container.
+        ports:
+        - containerPort: 80  # The port exposed by the container inside the pod.
+---
+apiVersion: v1  # Specifies the version of the Kubernetes API for the Service resource.
+kind: Service  # The type of Kubernetes resource we are creating (in this case, a Service).
+metadata:
+  name: client-service  # The name of the Service resource.
+spec:
+  selector:
+    app: client  # The Service will route traffic to pods that have the label 'app: client'.
+  ports:
+    - protocol: TCP  # The protocol to use for communication (TCP in this case).
+      port: 32010  # The port on which the Service will listen for traffic.
+      targetPort: 80  # The port on the pods that the Service will forward traffic to (port 80 in this case).
+      nodePort: 32010
+  type: NodePort

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fantasy Web App</title>
+</head>
+<body>
+    <h1>Welcome to the Fantasy Web App</h1>
+    <p id="message">Click the button to fetch the API response...</p>
+    <p id="error-message" style="color: red; display: none;">There was an error connecting to the backend. Please try again later.</p>
+
+    <button id="fetchButton">Fetch API</button>
+
+    <script>
+        const fetchData = () => {
+            fetch('https://grouper-ace-merely.ngrok-free.app/api')
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    document.getElementById('message').innerText = data.message;
+                    console.log('API Response:', data.message);
+                })
+                .catch(error => {
+                    console.error('Error fetching API:', error);
+                    // Display error message on the UI
+                    document.getElementById('error-message').style.display = 'block';
+                });
+        };
+
+        // Add event listener to button
+        document.getElementById('fetchButton').addEventListener('click', fetchData);
+    </script>
+</body>
+</html>
