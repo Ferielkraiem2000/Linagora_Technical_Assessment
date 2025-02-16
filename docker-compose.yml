@@ -4,13 +4,13 @@ services:
     build:
       context: ./backend
     ports:
-      - "3000:3000"
+      - "3000:3000" # Maps port 3000 on the host to port 3000 inside the container.
   
   client:
     build:
       context: ./frontend
     ports:
-      - "80:80"
+      - "80:80" # Maps port 80 on the host to port 80 inside the container.
     depends_on:
       - server
 

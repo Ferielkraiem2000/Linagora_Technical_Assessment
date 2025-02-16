@@ -6,28 +6,28 @@ spec:
   replicas: 2  # Number of identical pods you want running
   selector:
     matchLabels:
-      app: client  # The Deployment will manage pods that have the label 'app: client'.
+      app: client  # Ensures the Deployment manages pods labeled with 'app: client'
   template:
     metadata:
       labels:
-        app: client  # The pods created by the Deployment will have the label 'app: client'.
+        app: client  # The pods created by the Deployment will have the label 'app: client'
     spec:
       containers:
-      - name: client  # The name of the container inside the pod.
-        image: ferielkraiem/client-side:latest # The image used for the container.
+      - name: client  # The name of the container inside the pod
+        image: ferielkraiem/client-side:latest # The image used for the container
         ports:
-        - containerPort: 80  # The port exposed by the container inside the pod.
+        - containerPort: 80  # The port the container listens on inside the pod
 ---
 apiVersion: v1  # Specifies the version of the Kubernetes API for the Service resource.
-kind: Service  # The type of Kubernetes resource we are creating (in this case, a Service).
+kind: Service  # The type of Kubernetes resource we are creating.
 metadata:
   name: client-service  # The name of the Service resource.
 spec:
   selector:
     app: client  # The Service will route traffic to pods that have the label 'app: client'.
   ports:
-    - protocol: TCP  # The protocol to use for communication (TCP in this case).
-      port: 32010  # The port on which the Service will listen for traffic.
-      targetPort: 80  # The port on the pods that the Service will forward traffic to (port 80 in this case).
-      nodePort: 32010
+    - protocol: TCP   # The protocol to use for communication
+      port: 32010     # The port on which the Service will listen inside the cluster.
+      targetPort: 80  # The container port
+      nodePort: 32010 # The externally accessible port on the node
   type: NodePort

@@ -8,13 +8,12 @@
 <body>
     <h1>Welcome to the Fantasy Web App</h1>
     <p id="message">Click the button to fetch the API response...</p>
-    <p id="message">Testtttttt</p>
-
     <p id="error-message" style="color: red; display: none;">There was an error connecting to the backend. Please try again later.</p>
 
     <button id="fetchButton">Fetch API</button>
     <script>
         const fetchData = () => {
+            //url to test with kubernetes:
             // fetch('https://grouper-ace-merely.ngrok-free.app/api')
             fetch('http://localhost:3000/api')
                 .then(response => {

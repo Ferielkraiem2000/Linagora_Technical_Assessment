@@ -1,13 +1,13 @@
 apiVersion: apps/v1  # Specifies the version of the Kubernetes API to use for this resource.
-kind: Deployment  # The type of resource we are creating (in this case, a Deployment).
+kind: Deployment  # The type of resource we are creating.
 metadata:
   name: server-deployment  # The name of the Deployment resource.
 
 spec:
-  replicas: 2  # We want 2 copies (replicas) of the "server" pod running at all times.
+  replicas: 2  # We want 2 copies of the "server" pod running at all times.
   selector:
     matchLabels:
-      app: server  # This matches the pods that the Deployment will manage (pods with the label 'app: server').
+      app: server  # This matches the pods that the Deployment will manage.
 
   template:
     metadata:
@@ -16,21 +16,21 @@ spec:
     spec:
       containers:
       - name: server  # The name of the container in the pod.
-        image: ferielkraiem/server-side:latest # The Docker image used to create the container (replace with your actual image).
+        image: ferielkraiem/server-side:latest # The Docker image used to create the container.
         ports:
         - containerPort: 3000  # The container exposes port 3000, where the application runs.
 
 ---
 apiVersion: v1  # The version of the Kubernetes API used for this resource.
-kind: Service  # The type of resource we are creating (in this case, a Service).
+kind: Service  # The type of resource we are creating.
 metadata:
   name: server-service  # The name of the Service.
 spec:
   selector:
     app: server  # The Service will forward traffic to the pods with the label 'app: server'.
   ports:
-    - protocol: TCP  # The protocol used (TCP in this case).
-      port: 32000  # The port on which the Service will listen inside the cluster.
-      targetPort: 3000 # The container port
-      nodePort: 32000
+    - protocol: TCP 
+      port: 32000     # The port on which the Service will listen inside the cluster.
+      targetPort: 3000  # The container port
+      nodePort: 32000    # The externally accessible port on the node.
   type: NodePort
