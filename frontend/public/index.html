@@ -14,8 +14,8 @@
     <script>
         const fetchData = () => {
             //url to test with kubernetes:
-            fetch('https://grouper-ace-merely.ngrok-free.app/api')
-            // fetch('http://localhost:3000/api')
+            // fetch('https://grouper-ace-merely.ngrok-free.app/api')
+            fetch('http://localhost:3000/api')
                 .then(response => {
                     if (!response.ok) {
                         throw new Error('Network response was not ok');
