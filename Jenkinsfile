@@ -50,8 +50,8 @@
                     script {
                       sshagent(['vm_jenkins']) {
                         sh """
-                        ssh -o StrictHostKeyChecking=no vagrant@192.168.1.32 'kubectl apply -f ./k8s/server-deployment.yml'
-                        ssh -o StrictHostKeyChecking=no vagrant@192.168.1.32 'kubectl apply -f ./k8s/client-deployment.yml'
+                        ssh -o StrictHostKeyChecking=no vagrant@192.168.163.32 'kubectl apply -f ./k8s/server-deployment.yml'
+                        ssh -o StrictHostKeyChecking=no vagrant@192.168.163.32 'kubectl apply -f ./k8s/client-deployment.yml'
                         """
                     }
                     }
