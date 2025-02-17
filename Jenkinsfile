@@ -7,7 +7,7 @@
                     checkout scm
                 }
             }
-    
+
             stage('Log in to Docker Hub') {
                 steps {
                     script {
@@ -57,6 +57,5 @@
                     }
                 }
             }
-        }
-        
+        }    
     }
